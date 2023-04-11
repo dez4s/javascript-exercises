@@ -1,20 +1,5 @@
 const removeFromArray = function(array, ...theArgs) {
-  let finalArray = [];
-  
-  array.filter((element) => {
-    let isGood = 0;   
-    for (i = 0; i < theArgs.length; i++) {
-      if (element === theArgs[i]) {
-        isGood++;
-      }
-    }
-
-    if (isGood < 1) {
-      finalArray.push(element);
-    }
-
-  })
-  return finalArray;
+  return array.filter(element => !theArgs.includes(element));
 }
   
   removeFromArray([1, 2, 3, 4], 3);
