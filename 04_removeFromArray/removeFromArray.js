@@ -1,16 +1,20 @@
-const removeFromArray = function(array) {
-  let removeNr = Array.prototype.slice.call(arguments, 1);
+const removeFromArray = function(array, ...theArgs) {
   let finalArray = [];
-  label:
-  for (i = 0; i < array.length; i++) { 
-    for (j = 0; j < removeNr.length; j++) {
-      if (array[i] === removeNr[j]) {
-        continue label;
+  
+  array.filter((element) => {
+    let isGood = 0;   
+    for (i = 0; i < theArgs.length; i++) {
+      if (element === theArgs[i]) {
+        isGood++;
       }
     }
-    finalArray.push(array[i]); 
-  }
-return finalArray;
+
+    if (isGood < 1) {
+      finalArray.push(element);
+    }
+
+  })
+  return finalArray;
 }
   
   removeFromArray([1, 2, 3, 4], 3);
